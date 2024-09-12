@@ -30,7 +30,7 @@ public class LifeBoard{
         //creates a temp array for updating, since we don't want to modify self.board
         //until every cell has been checked
 
-        int[][] temp = board;
+        int[][] temp = new int [rows][cols];
 
         for (int i = 0; i < rows; i++){
             for (int j = 0; j < cols; j++){
@@ -38,20 +38,22 @@ public class LifeBoard{
                 int neighbors = countNeighbors(i, j);
 
                 if (board[i][j] == 1 && neighbors < 2){
-                    board[i][j] = 0; //Any live cell with less than two live neighbours dies
+                    temp[i][j] = 0; //Any live cell with less than two live neighbours dies
                 }
                 else if (board[i][j] == 1 && (neighbors == 2 || neighbors == 3)){
-                    board[i][j] = 1; //Any live cell with two or three live neighbours lives
+                    temp[i][j] = 1; //Any live cell with two or three live neighbours lives
                 }
                 else if (board[i][j] == 1 && neighbors > 3){
-                    board[i][j] = 0;
+                    temp[i][j] = 0;
                 }
                 else if (board[i][j] == 0 && neighbors == 3){
-                    board[i][j] = 1;
+                    temp[i][j] = 1;
                 }
 
             }
         }
+
+        board = temp;
 
     }
 

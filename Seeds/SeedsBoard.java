@@ -30,7 +30,7 @@ public class SeedsBoard{
         //creates a temp array for updating, since we don't want to modify self.board
         //until every cell has been checked
 
-        int[][] temp = board;
+        int[][] temp = new int [rows][cols];
 
         for (int i = 0; i < rows; i++){
             for (int j = 0; j < cols; j++){
@@ -38,14 +38,16 @@ public class SeedsBoard{
                 int neighbors = countNeighbors(i, j);
 
                 if (board[i][j] == 0 && neighbors == 2){
-                    board[i][j] = 1; //if off and 2 neighbors, cell turns on
+                    temp[i][j] = 1; //if off and 2 neighbors, cell turns on
                 }
                 else if(board[i][j] == 1){
-                    board[i][j] = 0; //if cell is on, turn off
+                    temp[i][j] = 0; //if cell is on, turn off
                 }
 
             }
         }
+
+        board = temp;
 
     }
 
