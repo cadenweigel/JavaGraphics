@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class LifeBoard{
+public class SeedsBoard{
 
     private int rows;
     private int cols;
@@ -9,7 +9,7 @@ public class LifeBoard{
     private double emptyChance;
     private int[][] board;
 
-    public LifeBoard(int rows, int cols, double initialDensity) {
+    public SeedsBoard(int rows, int cols, double initialDensity) {
         this.rows = rows;
         this.cols = cols;
         emptyChance = 1 - initialDensity;
@@ -37,17 +37,11 @@ public class LifeBoard{
 
                 int neighbors = countNeighbors(i, j);
 
-                if (board[i][j] == 1 && neighbors < 2){
-                    board[i][j] = 0; //Any live cell with less than two live neighbours dies
+                if (board[i][j] == 0 && neighbors == 2){
+                    board[i][j] = 1; //if off and 2 neighbors, cell turns on
                 }
-                else if (board[i][j] == 1 && (neighbors == 2 || neighbors == 3)){
-                    board[i][j] = 1; //Any live cell with two or three live neighbours lives
-                }
-                else if (board[i][j] == 1 && neighbors > 3){
-                    board[i][j] = 0;
-                }
-                else if (board[i][j] == 0 && neighbors == 3){
-                    board[i][j] = 1;
+                else if(board[i][j] == 1){
+                    board[i][j] = 0; //if cell is on, turn off
                 }
 
             }

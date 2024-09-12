@@ -1,17 +1,16 @@
 import javax.swing.*;
 import java.awt.*;
 
-//https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life sim rules
-//https://en.wikipedia.org/wiki/Brian%27s_Brain for later!
+//https://en.wikipedia.org/wiki/Seeds_(cellular_automaton)
 
-public class LifeSim extends JPanel{
+public class SeedsSim extends JPanel{
 
-    private LifeBoard game;
+    private SeedsBoard game;
 
     public static final Color alive_color = new Color(102, 102, 255);
     public static final Color dead_color = new Color(0, 0, 0);
 
-    public LifeSim(LifeBoard game) {
+    public SeedsSim(SeedsBoard game) {
         this.game = game;
     }
 
@@ -41,11 +40,11 @@ public class LifeSim extends JPanel{
         int cols = 500;
         double initialDensity = 0.25;
 
-        LifeBoard game = new LifeBoard(rows, cols, initialDensity);
+        SeedsBoard game = new SeedsBoard(rows, cols, initialDensity);
         game.initializeBoard();
 
-        JFrame frame = new JFrame("Conway's Game of Life");
-        LifeSim sim = new LifeSim(game);
+        JFrame frame = new JFrame("Seeds");
+        SeedsSim sim = new SeedsSim(game);
         frame.add(sim);
         frame.setSize(cols, rows);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
