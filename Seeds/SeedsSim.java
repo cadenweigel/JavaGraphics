@@ -38,7 +38,7 @@ public class SeedsSim extends JPanel{
 
         int rows = 500;
         int cols = 500;
-        double initialDensity = 0.25;
+        double initialDensity = 0.05;
 
         SeedsBoard game = new SeedsBoard(rows, cols, initialDensity);
         game.initializeBoard();
